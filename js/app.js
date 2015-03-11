@@ -1,1 +1,1 @@
-window.alert($.fn.jquery);
+console.log($.fn.jquery);
