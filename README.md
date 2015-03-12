@@ -4,6 +4,9 @@ Web制作用にhaml、bower、sassのコンパイルや配置をgulpで回すテ
 
 ### 準備するもの
 * [node.js](https://nodejs.org/download/)
+* `npm install -g gulp bower`：どこで実行してもいい
+
+※ npmの実行は`sudo`いるかも（Mac）
 
 ### cloneしたら
 1. `npm install`
