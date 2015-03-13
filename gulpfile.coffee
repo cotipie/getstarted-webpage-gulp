@@ -26,8 +26,11 @@ gulp.task 'jslib', ->
     .pipe uglify({preserveComments:'some'})
     .pipe (gulp.dest 'dist/js')
 
-gulp.task 'libclean', (cb)->
+gulp.task 'libClean', (cb)->
   del ['lib'], cb
+
+gulp.task 'releaseClean', (cb)->
+  del ['dist'], cb
 
 gulp.task 'build:js',->
   gulp.src 'js/*.js'
@@ -66,10 +69,13 @@ gulp.task 'build:src', (cb)->
   runSequence 'build:haml','build:html',cb
 
 gulp.task 'getstart', (cb)->
-  runSequence 'bower',['fonts','jslib'],'libclean','default',cb
+  runSequence 'bower',['fonts','jslib'],'default',cb
 
 gulp.task 'default', ->
 	gulp.start 'build:sass','build:src','build:js','imagemin'
+
+gulp.task 'release', (cb)->
+  runSequence 'releaseClean','bower',['fonts','jslib'],'libClean','default',cb 
 
 gulp.task 'watch',->
 	gulp.start 'server'
